@@ -9,9 +9,9 @@ type Customer {
 }
 
 input CustomerInputs {
-  name: String!
+  name: String
   number: String
-  id: String
+  id: Int
   timestamp: GraphQLDate
 }
 
@@ -31,5 +31,5 @@ type Query {
 type Mutation {
   setAboutMessage(message: String!): String
   customerAdd(customer: CustomerInputs!): Customer!
-  customerRemove(id: Int!): Int!
+  customerRemove(custSn: Int!): Int!
 }

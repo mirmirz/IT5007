@@ -94,10 +94,11 @@ async function customerAdd(_, { customer }) {
   return savedCustomer;
 }
 
-async function customerRemove(_, { custID} ) {
+async function customerRemove(_, { custSn} ) {
+  validateIDForRemoval(custSn)
   try {
-    await db.collection('customers').deleteOne({id: custID});
-    return custID;
+    await db.collection('customers').deleteOne({id: custSn});
+    return custSn;
   } catch (err) {
     return 0;
   }

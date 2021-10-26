@@ -54,8 +54,8 @@ class HotelCalifornia extends React.Component {
   }
 
   async removeCust(custSn) {
-    const query = `mutation customerRemove($custSn: ID!) {
-      customerRemove(id: $custSn)
+    const query = `mutation customerRemove($custSn: Int!) {
+      customerRemove(custSn: $custSn)
     }`;
 
     const data = await graphQLFetch(query, { custSn });
@@ -178,8 +178,7 @@ class RemoveCustomerPage extends React.Component {
   handleRemoveCust = (e) =>{
     e.preventDefault();
     const form = document.forms.removeCust;
-    const custSn = {id: parseInt(form.SnRemoval.value) }
-    this.props.removeCust(custSn)
+    this.props.removeCust(parseInt(form.SnRemoval.value));
     form.SnRemoval.value = "";
   };
 

@@ -150,7 +150,7 @@ var HotelCalifornia = /*#__PURE__*/function (_React$Component) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                query = "mutation customerRemove($custSn: ID!) {\n      customerRemove(id: $custSn)\n    }";
+                query = "mutation customerRemove($custSn: Int!) {\n      customerRemove(custSn: $custSn)\n    }";
                 _context3.next = 3;
                 return graphQLFetch(query, {
                   custSn: custSn
@@ -376,11 +376,8 @@ var RemoveCustomerPage = /*#__PURE__*/function (_React$Component4) {
     _defineProperty(_assertThisInitialized(_this3), "handleRemoveCust", function (e) {
       e.preventDefault();
       var form = document.forms.removeCust;
-      var custSn = {
-        id: parseInt(form.SnRemoval.value)
-      };
 
-      _this3.props.removeCust(custSn);
+      _this3.props.removeCust(parseInt(form.SnRemoval.value));
 
       form.SnRemoval.value = "";
     });
